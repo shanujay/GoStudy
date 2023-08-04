@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Register">
+
+    <!--Full Name Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/fullName"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+        android:hint="@string/full_name"
+        android:textColor="@color/black"
+        android:textColorHint="#d580ff" />
+
+    <!--User Name Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/userName"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+        android:hint="@string/username"
+        android:textColor="@color/black"
+        android:textColorHint="#d580ff"/>
+
+    <!--Email Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/email"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:textSize="20sp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:textColor="@color/black"
+        android:textColorHint="#d580ff"/>
+
+    <!--Password Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:textSize="20sp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="#d580ff"
+        app:passwordToggleEnabled="true"/>
+
+    <!--Progress Bar-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--Register Button-->
+    <Button
+        android:id="@+id/register"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_btn"
+        android:text="@string/register"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+
+    <!--Log In Page Navigate-->
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/do_you_have_an_account"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="2sp"/>
+
+    <TextView
+        android:id="@+id/loginHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+</LinearLayout>

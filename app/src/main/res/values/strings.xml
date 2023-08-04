@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GoStudy</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="login">LogIn</string>
+    <string name="don_t_have_an_account">Don`t have an account?</string>
+    <string name="register">Register</string>
+    <string name="do_you_have_an_account">Do You Have An Account?</string>
+    <string name="username">Username</string>
+    <string name="full_name">Full Name</string>
+    <string name="forget_password_instructions">Check your email and follow instructions to change password</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_your_email">Enter your Email</string>
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".LogIn">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200sp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/login"
+        android:layout_marginBottom="50sp"/>
+
+    <!--Email Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/email"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:textColorHint="#d580ff"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <!--Password Input Field-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password"
+        android:layout_width="260sp"
+        android:layout_height="48sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10sp"
+        android:textSize="20sp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="#d580ff"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#202020"/>
+
+
+    <!--Forget Password-->
+    <TextView
+        android:id="@+id/forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forget_password"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginBottom="10sp"
+        android:layout_marginStart="70sp"/>
+
+    <!--Log In Button-->
+    <Button
+        android:id="@+id/login"
+        android:layout_width="260sp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:background="@drawable/round_btn"/>
+
+
+    <!--Register Page Navigate-->
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/don_t_have_an_account"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="2sp"/>
+
+    <TextView
+        android:id="@+id/registerHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+</LinearLayout>
