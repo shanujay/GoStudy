@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/register_screen_background"
     tools:context=".Register">
 
     <!--Full Name Input Field-->
@@ -20,7 +21,7 @@
         android:inputType="textPersonName"
         android:hint="@string/full_name"
         android:textColor="@color/black"
-        android:textColorHint="#d580ff" />
+        android:textColorHint="#5579C6" />
 
     <!--User Name Input Field-->
     <com.google.android.material.textfield.TextInputEditText
@@ -33,7 +34,7 @@
         android:inputType="textPersonName"
         android:hint="@string/username"
         android:textColor="@color/black"
-        android:textColorHint="#d580ff"/>
+        android:textColorHint="#5579C6"/>
 
     <!--Email Input Field-->
     <com.google.android.material.textfield.TextInputEditText
@@ -46,7 +47,7 @@
         android:inputType="textEmailAddress"
         android:hint="@string/email"
         android:textColor="@color/black"
-        android:textColorHint="#d580ff"/>
+        android:textColorHint="#5579C6"/>
 
     <!--Password Input Field-->
     <com.google.android.material.textfield.TextInputEditText
@@ -59,7 +60,7 @@
         android:inputType="textPassword"
         android:hint="@string/password"
         android:textColor="@color/black"
-        android:textColorHint="#d580ff"
+        android:textColorHint="#5579C6"
         app:passwordToggleEnabled="true"/>
 
     <!--Progress Bar-->

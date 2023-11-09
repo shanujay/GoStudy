@@ -5,7 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_logo"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".SplashScreen">
+
+    <!-- App Logo -->
+    <ImageView
+        android:layout_width="350sp"
+        android:layout_height="350sp"
+        android:contentDescription="@string/forget_password"
+        android:src="@drawable/app_logo" />
 
 </LinearLayout>

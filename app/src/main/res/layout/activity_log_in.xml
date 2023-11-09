@@ -7,15 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/login_screen_background"
     tools:context=".LogIn">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="200sp"
-        android:layout_height="200dp"
+        android:layout_width="250sp"
+        android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/login"
-        android:layout_marginBottom="50sp"/>
+        android:layout_marginBottom="30sp"/>
 
     <!--Email Input Field-->
     <com.google.android.material.textfield.TextInputEditText
@@ -26,7 +27,7 @@
         android:layout_margin="10sp"
         android:inputType="textEmailAddress"
         android:hint="@string/email"
-        android:textColorHint="#d580ff"
+        android:textColorHint="#5579C6"
         android:textColor="@color/black"
         android:textSize="20sp"/>
 
@@ -41,7 +42,7 @@
         android:inputType="textPassword"
         android:hint="@string/password"
         android:textColor="@color/black"
-        android:textColorHint="#d580ff"
+        android:textColorHint="#5579C6"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="#202020"/>
 
