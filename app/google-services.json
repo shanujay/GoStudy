@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "368660146326",
+    "project_id": "gostudy-6ea26",
+    "storage_bucket": "gostudy-6ea26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368660146326:android:07ecdf462c37ecb1693ab7",
+        "android_client_info": {
+          "package_name": "com.techcools.gostudy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD8fntWrZTuS9d618clm3OYrzQaniO_q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

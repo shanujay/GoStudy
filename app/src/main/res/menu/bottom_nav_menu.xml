@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/nav_icon_home"/>
+
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/nav_icon_calendar"/>
+
+    <item
+        android:id="@+id/progress"
+        android:icon="@drawable/nav_icon_progress"/>
+
+    <item
+        android:id="@+id/community"
+        android:icon="@drawable/nav_icon_community"/>
+
+
+</menu>

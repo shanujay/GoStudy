@@ -12,4 +12,8 @@
     <string name="forget_password_instructions">Check your email and follow instructions to change password</string>
     <string name="change_password">Change Password</string>
     <string name="enter_your_email">Enter your Email</string>
+    <string name="home">Home</string>
+    <string name="calendar">Calendar</string>
+    <string name="progress">Progress</string>
+    <string name="community">Community</string>
 </resources>
