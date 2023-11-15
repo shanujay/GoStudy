@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QuestionnaireActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
+
+        <ImageButton
+            android:id="@+id/closeQuestionnaire"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/close_icon"
+            android:background="@color/white"
+            android:contentDescription="@string/close_questionnaire"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question"
+                android:layout_marginTop="16dp"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonA"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/a"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonB"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/b"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/c"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp">
+
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/round_btn"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

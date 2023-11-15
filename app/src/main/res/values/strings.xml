@@ -18,4 +18,57 @@
     <string name="community">Community</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Questionnaire Strings -->
+    <string name="AuditoryDescription">If you are an auditory learner, you learn by hearing and listening. You understand and remember things you have heard. You store information by the way it sounds, and you have an easier time understanding spoken instructions than written ones. You often learn by reading out loud because you have to hear it or speak it in order to know it.
+
+As an auditory learner, you probably hum or talk to yourself or others if you become bored. People may think you are not paying attention, even though you may be hearing and understanding everything being said.</string>
+
+    <string name="VisualDescription">If you are a visual learner, you learn by reading or seeing pictures. You understand and remember things by sight. You can picture what you are learning in your head, and you learn best by using methods that are primarily visual. You like to see what you are learning.
+
+As a visual learner, you are usually neat and clean. You often close your eyes to visualize or remember something, and you will find something to watch if you become bored. You may have difficulty with spoken directions and may be easily distracted by sounds. You are attracted to color and to spoken language (like stories) that is rich in imagery.</string>
+
+    <string name="TactileDescription">If you are a tactile learner, you learn by touching and doing. You understand and remember things through physical movement. You are a "hands-on" learner who prefers to touch, move, build, or draw what you learn, and you tend to learn better when some type of physical activity is involved. You need to be active and take frequent breaks, you often speak with your hands and with gestures, and you may have difficulty sitting still.
+
+As a tactile learner, you like to take things apart and put things together, and you tend to find reasons to tinker or move around when you become bored. You may be very well coordinated and have good athletic ability. You can easily remember things that were done but may have difficulty remembering what you saw or heard in the process. You often communicate by touching, and you appreciate physically expressed forms of encouragement, such as a pat on the back.</string>
+
+    <string name="PomodoroMethod">The Pomodoro Technique is a time management method based on 25-minute stretches of focused work broken by five-minute breaks. Longer breaks, typically 15 to 30 minutes, are taken after four consecutive work intervals. Each work interval is called a pomodoro, the Italian word for tomato (plural: pomodori).</string>
+
+    <string name="ActiveRecallMethod">With active recall, you learn by retrieving information from your brain. Although this may sound strange, in practice, it is very straightforward. Active recall involves taking a topic you wish to learn, creating questions based on that topic, and then repeatedly testing yourself on those questions</string>
+
+    <string name="MindMapMethod">A mind map involves writing down a central theme and thinking of new and related ideas which radiate out from the centre. By focusing on key ideas written down in your own words and looking for connections between them, you can map knowledge in a way that will help you to better understand and retain information.</string>
+
+    <string name="FlashcardMethod">It is a simple implementation of the principle of spaced repetition, where cards are reviewed at increasing intervals. In this method, flashcards are sorted into groups according to how well the learner knows each one in the Leitner learning box. The learners try to recall the solution written on a flashcard.</string>
+
+    <string name="GroupStudyMethod">Group studying can be an excellent way to learn new material and improve academic performance. Surrounding yourself with people who will challenge and provide feedback on your performance can help keep you motivated and on track with your learning.</string>
+
+    <string name="ChunkingMethod">The chunking technique is a memorization method that begins with distilling large pieces of information into smaller pieces or chunks. You might do this by identifying similarities between key concepts to create categories, associating information with personal experiences, developing visual cues or creating acronyms.</string>
+    <string name="back_button">back button</string>
+    <string name="find_difficult_to_concentrate">Find Difficult to concentrate?</string>
+    <string name="take_this_questionnaire_to_n_understand_about_your_own_n_study_method">Take this questionnaire to \n understand about your own \n study method.</string>
+    <string name="start_questionnaire">Start Questionnaire</string>
+    <string name="study_method">Study Method</string>
+    <string name="next">Next</string>
+    <string name="close_questionnaire">Close Questionnaire</string>
+    <string name="question">Question</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="auditory_study_methods">Auditory Study Methods</string>
+    <string name="pomodoro_method">Pomodoro Method</string>
+    <string name="active_recall_method">Active Recall Method</string>
+    <string name="visual_study_methods">Visual Study Methods</string>
+    <string name="mind_map_method">Mind Map Method</string>
+    <string name="flashcard_method">Flashcard Method</string>
+    <string name="tactile_study_methods">Tactile Study Methods</string>
+    <string name="group_study_method">Group Study Method</string>
+    <string name="chunking_study_method">Chunking Study Method</string>
+    <string name="auditory_score">Auditory Score</string>
+    <string name="visual_score">Visual Score</string>
+    <string name="tactile_score">Tactile Score</string>
+    <string name="your_learning_style">Your Learning Style:</string>
+    <string name="learning_style">Learning Style</string>
+    <string name="study_methods">Study Methods</string>
+    <string name="close">Close</string>
 </resources>

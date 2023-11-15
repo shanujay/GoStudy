@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1sp"
+    app:layout_editor_absoluteY="1sp"
+    android:background="#D1C4E9"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".AuditoryMethodsActivity">
+
+        <!-- Auditory Study Methods Topic -->
+        <TextView
+            android:id="@+id/auditoryTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/auditory_study_methods"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <!-- Card View for Study Methods -->
+
+        <!-- Method 1 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/auditoryMethod1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auditoryTopic"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:contentPadding="28dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/pomodoroMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pomodoro_method"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/pomodoroDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pomodoroMethod"
+                    android:text="@string/PomodoroMethod"
+                    android:textSize="17sp"
+                    android:layout_marginTop="5dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/pomodoroDesc"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/pomodoro_method"
+                    android:contentDescription="@string/pomodoro_method"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Method 2 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auditoryMethod1"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:contentPadding="28dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/recallMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active_recall_method"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/recallDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recallMethod"
+                    android:text="@string/ActiveRecallMethod"
+                    android:textSize="17sp"
+                    android:layout_marginTop="5dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/recallDesc"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/active_recall_method"
+                    android:contentDescription="@string/active_recall_method"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>
