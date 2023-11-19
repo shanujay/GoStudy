@@ -18,4 +18,16 @@
     <string name="community">Community</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_your_profile">Edit Your Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="timer_settings">Timer Settings</string>
+    <string name="app_theme">App Theme</string>
+    <string name="help_center">Help Center</string>
+    <string name="log_out">Log Out</string>
+    <string name="study_remainder">Study Remainder</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="done">Done</string>
+    <string name="go_back">Go Back</string>
+    <string name="name">Name</string>
 </resources>
