@@ -11,20 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoStudy"
         tools:targetApi="34">
-        <activity android:name=".ResultsActivity" />
 
-        <activity android:name=".TactileMethodsActivity" />
-
-        <activity android:name=".AuditoryMethodsActivity" />
-
-        <activity android:name=".VisualMethodsActivity" />
 
         <activity
             android:name=".QuestionnaireActivity"
             android:exported="false" />
+
         <activity
             android:name=".StudyMethodActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -34,18 +30,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ForgetPasswordEmail"
             android:exported="false" />
+
         <activity
             android:name=".Register"
             android:exported="false" />
+
         <activity
             android:name=".LogIn"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <activity android:name=".ResultsActivity" />
+
+        <activity android:name=".TactileMethodsActivity" />
+
+        <activity android:name=".AuditoryMethodsActivity" />
+
+        <activity android:name=".VisualMethodsActivity" />
+
     </application>
 
 </manifest>
