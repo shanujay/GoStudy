@@ -71,4 +71,7 @@ As a tactile learner, you like to take things apart and put things together, and
     <string name="learning_style">Learning Style</string>
     <string name="study_methods">Study Methods</string>
     <string name="close">Close</string>
+    <string name="add_post">Add Post</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="cancel">Cancel</string>
 </resources>
