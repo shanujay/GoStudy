@@ -70,8 +70,21 @@ As a tactile learner, you like to take things apart and put things together, and
     <string name="your_learning_style">Your Learning Style:</string>
     <string name="learning_style">Learning Style</string>
     <string name="study_methods">Study Methods</string>
+
     <string name="close">Close</string>
     <string name="add_post">Add Post</string>
     <string name="add_photo">Add Photo</string>
     <string name="cancel">Cancel</string>
+    <string name="edit_your_profile">Edit Your Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="timer_settings">Timer Settings</string>
+    <string name="app_theme">App Theme</string>
+    <string name="help_center">Help Center</string>
+    <string name="log_out">Log Out</string>
+    <string name="study_remainder">Study Remainder</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="done">Done</string>
+    <string name="go_back">Go Back</string>
+    <string name="name">Name</string>
 </resources>

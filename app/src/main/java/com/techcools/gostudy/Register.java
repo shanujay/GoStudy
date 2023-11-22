@@ -133,18 +133,6 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                // Store User Details in Firebase FireStore When User Register
-                Map<String,Object> user = new HashMap<>();
-                user.put("fullName", fName);
-                user.put("userEmail", email);
-                user.put("userName", userName);
-
-                firebaseFirestore.collection("Users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Register.this, "Account Created.", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
                 //Register the user in FireBase
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -153,10 +141,35 @@ public class Register extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(Register.this, "Authentication success.", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            Intent intent = new Intent(getApplicationContext(), LogIn.class);
-                            startActivity(intent);
+                            DbQuery.createUserData(fName, email, userName, new AppCompleteListener(){
+
+                                @Override
+                                public void onSuccess() {
+
+                                    DbQuery.loadData(new AppCompleteListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                                            startActivity(intent);
+                                            Register.this.finish();
+                                        }
+
+                                        @Override
+                                        public void onFailure() {
+                                            Toast.makeText(Register.this, "Something Went Wrong ! ",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                                }
+
+                                @Override
+                                public void onFailure() {
+
+                                    Toast.makeText(Register.this, "Something Went Wrong ! Please Try Again Later.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                         } else {
                             // If sign in fails, display a message to the user.

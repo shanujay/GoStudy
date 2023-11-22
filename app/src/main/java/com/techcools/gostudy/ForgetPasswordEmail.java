@@ -46,21 +46,6 @@ public class ForgetPasswordEmail extends AppCompatActivity {
 
         );
 
-        // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
-
-        // Define ColorDrawable object and parse color
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#D1C4E9"));
-
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-
-        // Customize the back button
-        actionBar.setHomeAsUpIndicator(R.drawable.back_button);
-
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
     }

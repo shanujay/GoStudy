@@ -97,9 +97,21 @@ public class LogIn extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            DbQuery.loadData(new AppCompleteListener() {
+                                @Override
+                                public void onSuccess() {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    LogIn.this.finish();
+                                }
+
+                                @Override
+                                public void onFailure() {
+                                    Toast.makeText(LogIn.this, "Something Went Wrong !",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                         } else {
                             Toast.makeText(LogIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();

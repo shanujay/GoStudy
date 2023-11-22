@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/logOutConstraintLayout"
+    android:layout_width="300sp"
+    android:layout_height="160sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logOutDialog"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/change_profile_background"
+        android:paddingBottom="20sp"
+        android:paddingTop="10sp"
+        android:layout_marginTop="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/logOutTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Do You Want to Logout?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:paddingTop="20sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="@id/logOutDialog"/>
+
+        <!-- No Button -->
+        <Button
+            android:id="@+id/cancel_log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#FF725E"
+            android:layout_marginTop="12sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginBottom="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/logOut"
+            app:layout_constraintTop_toBottomOf="@id/logOutTitle"/>
+
+        <!-- Yes Button -->
+        <Button
+            android:id="@+id/logOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#FF725E"
+            android:layout_marginTop="12sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginBottom="20sp"
+            app:layout_constraintStart_toEndOf="@id/cancel_log_out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logOutTitle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/logOutIcon"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/notification_icon"
+        android:layout_marginStart="40sp"
+        android:layout_marginEnd="40sp"
+        android:background="@drawable/circle_notifications_background"
+        android:padding="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/logOutDialog"
+        app:layout_constraintBottom_toTopOf="@id/logOutDialog"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
