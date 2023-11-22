@@ -80,6 +80,12 @@ public class UserProfile extends AppCompatActivity {
 
         // Edit Notifications
         editNotifications = findViewById(R.id.editNotifications);
+        editNotifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateNotificationSettings();
+            }
+        });
 
         // Edit Study Remainders
         editRemainder = findViewById(R.id.editStudyRemainders);
@@ -205,6 +211,12 @@ public class UserProfile extends AppCompatActivity {
     /** Navigate to App Theme Settings Activity **/
     public void navigateAppThemeSettings() {
         Intent intent = new Intent(UserProfile.this, AppThemeSettings.class);
+        startActivity(intent);
+    }
+
+    /** Navigate to Notification Settings Activity **/
+    public void navigateNotificationSettings() {
+        Intent intent = new Intent(UserProfile.this, NotificationSettings.class);
         startActivity(intent);
     }
 

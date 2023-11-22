@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/user_profile_background"
-    tools:context=".TimerSettings">
+    tools:context=".NotificationSettings">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,13 +22,13 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/edit_timer"
-            android:contentDescription="@string/timer_settings"/>
+            android:src="@drawable/edit_notifications"
+            android:contentDescription="@string/notifications"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/timer_settings"
+            android:text="@string/notifications"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set the Pomodoro timer features. You can change timer for study sessions and breaks."
+        android:text="Set the various notification features. It makes your study more efficient."
         android:textSize="18sp"
         android:textColor="@color/black"
         android:paddingStart="20dp"
