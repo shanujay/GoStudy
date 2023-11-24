@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/register_screen_background"
+    tools:context=".Register">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/home" />
+        android:id="@+id/home_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello User"
+        android:paddingBottom="250px"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/Pomodoro_timerBtn"
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:paddingBottom="100px"
+
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/PomodoroTimer" />
+
+    <ImageButton
+        android:id="@+id/upcoming_taskBtn"
+        android:layout_width="313dp"
+        android:layout_height="147dp"
+        android:backgroundTint="@color/white"
+        android:paddingBottom="100px"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/UpcomingTasks" />
+
+    <ImageButton
+        android:id="@+id/study_methodBtn"
+        android:layout_width="312dp"
+        android:layout_height="127dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/StudyMethod" />
+
+
+
+</LinearLayout>
