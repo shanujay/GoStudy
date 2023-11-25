@@ -58,7 +58,6 @@ public class EditProfile extends AppCompatActivity {
     String nameStr, usernameStr;
     ImageButton saveProfile, cancelEdit;
     CircleImageView profilePhoto;
-
     private Uri ImageUri;
     private Bitmap bitmap;
     FirebaseStorage storage;
