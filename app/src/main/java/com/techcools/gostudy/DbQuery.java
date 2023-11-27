@@ -15,11 +15,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
-
+import java.text.ParseException;
 public class DbQuery {
 
 
@@ -82,6 +88,53 @@ public class DbQuery {
                 });
     }
 
+    // Create Task Details
+    public static void createTask(String taskTitle, String taskDate, String taskTime, String taskStatus, AppCompleteListener completeListener) {
+        // Store Task Details in Firebase Firestore
+        Map<String, Object> task = new HashMap<>();
+        task.put("taskTitle", taskTitle);
+
+        // Convert the taskDate to a suitable format (assuming it's a string in "dd/MM/yyyy" format)
+        try {
+            SimpleDateFormat sdfInput = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date = sdfInput.parse(taskDate);
+            task.put("taskDate", sdfOutput.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            completeListener.onFailure();
+            return;
+        }
+
+        task.put("taskTime", taskTime);
+        task.put("status", "Not Completed");
+
+        // Generate a unique document ID for each task
+        String taskId = g_firestore.collection("Tasks").document().getId();
+
+        DocumentReference taskDoc = g_firestore.collection("Tasks")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserTasks")
+                .document(taskId);
+
+        WriteBatch batch = g_firestore.batch();
+
+        batch.set(taskDoc, task);
+
+        batch.commit()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void avoid) {
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
 
 
     public static void loadData(AppCompleteListener completeListener) {
@@ -117,5 +170,55 @@ public class DbQuery {
 
     }
 
+    // Get Task Details
+    public static void getTaskDataList(TaskDataListCompleteListener completeListener) {
+        g_firestore.collection("Tasks")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("UserTasks")
+                .orderBy("taskDate")  // Order tasks by date
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<TaskModel> taskList = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            TaskModel task = documentSnapshot.toObject(TaskModel.class);
+                            taskList.add(task);
+                        }
+                        completeListener.onSuccess(taskList);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    // Delete Task
+    public static void deleteTask(String taskId, AppCompleteListener completeListener) {
+        if (taskId != null) {
+            g_firestore.collection("Tasks")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .collection("UserTasks")
+                    .document(taskId)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            completeListener.onSuccess();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            completeListener.onFailure();
+                        }
+                    });
+        } else {
+            completeListener.onFailure(); // TaskId is null
+        }
+    }
 
 }
