@@ -16,12 +16,11 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="20dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileIconHome"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/task_manager_icon"
-            android:contentDescription="@string/edit_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profile_photo"
             android:layout_alignParentStart="true"/>
 
         <TextView
