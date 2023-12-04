@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".TaskManagerActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarTaskManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/backBtnTaskManager"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/back_button"
+            android:contentDescription="@string/go_back"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task Manager"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarTaskManager"
+        android:contentDescription="Task Manager Tab Layout"
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorColor="@color/white"
+        android:background="@color/white"
+        app:tabSelectedTextColor="#0A22A8"
+        app:tabTextColor="@color/black">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerTaskManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Task Manager View Pager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_below="@id/tab_layout"/>
+
+</RelativeLayout>
