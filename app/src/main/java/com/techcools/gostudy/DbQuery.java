@@ -172,10 +172,16 @@ public class DbQuery {
 
     // Get Task Details
     public static void getTaskDataList(TaskDataListCompleteListener completeListener) {
+        // Get the current date in the "yyyy-MM-dd" format
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
         g_firestore.collection("Tasks")
                 .document(FirebaseAuth.getInstance().getUid())
                 .collection("UserTasks")
-                .orderBy("taskDate")  // Order tasks by date
+                .whereEqualTo("status", "Not Completed")
+                .whereGreaterThanOrEqualTo("taskDate", currentDate)
+                .orderBy("taskDate")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -183,6 +189,7 @@ public class DbQuery {
                         ArrayList<TaskModel> taskList = new ArrayList<>();
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             TaskModel task = documentSnapshot.toObject(TaskModel.class);
+                            task.setTaskId(documentSnapshot.getId());
                             taskList.add(task);
                         }
                         completeListener.onSuccess(taskList);
@@ -196,29 +203,66 @@ public class DbQuery {
                 });
     }
 
-    // Delete Task
-    public static void deleteTask(String taskId, AppCompleteListener completeListener) {
-        if (taskId != null) {
-            g_firestore.collection("Tasks")
-                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .collection("UserTasks")
-                    .document(taskId)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            completeListener.onSuccess();
+    // Get Completed Task Details
+    public static void getCompletedTaskDataList(TaskDataListCompleteListener completeListener) {
+        g_firestore.collection("Tasks")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("UserTasks")
+                .whereEqualTo("status", "Completed")
+                .orderBy("taskDate")  // Order tasks by date
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<TaskModel> taskList = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            TaskModel task = documentSnapshot.toObject(TaskModel.class);
+                            task.setTaskId(documentSnapshot.getId()); // Manually set taskId
+                            Log.d("FirestoreData", "Task: " + documentSnapshot.getData());
+                            taskList.add(task);
                         }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            completeListener.onFailure();
-                        }
-                    });
-        } else {
-            completeListener.onFailure(); // TaskId is null
-        }
+                        completeListener.onSuccess(taskList);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
     }
+
+    // Get Overdue Task Data List
+    public static void getOverdueTaskDataList(TaskDataListCompleteListener completeListener) {
+        g_firestore.collection("Tasks")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("UserTasks")
+                .whereEqualTo("status", "Not Completed")
+                .orderBy("taskDate")  // Order tasks by date
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<TaskModel> taskList = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            TaskModel task = documentSnapshot.toObject(TaskModel.class);
+                            task.setTaskId(documentSnapshot.getId()); // Manually set taskId
+
+                            // Include only overdue tasks
+                            if (task.isOverdue()) {
+                                taskList.add(task);
+                            }
+                        }
+                        completeListener.onSuccess(taskList);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
 
 }

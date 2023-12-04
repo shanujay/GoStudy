@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,6 +54,29 @@ public class CalendarFragment extends Fragment {
         taskAdapter = new TaskAdapter(taskArrayList);
         recyclerView.setAdapter(taskAdapter);
 
+        // Attach ItemTouchHelper for swipe-to-delete
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                // Handle swipe to delete
+                if (direction == ItemTouchHelper.LEFT) {
+                    // Display a confirmation dialog or perform deletion directly
+                    showDeleteConfirmationDialog(viewHolder.getAdapterPosition());
+                }else if (direction == ItemTouchHelper.RIGHT) {
+                    // Handle swipe to complete
+                    showCompleteConfirmationDialog(viewHolder.getAdapterPosition());
+                }
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
         fabAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,29 +85,8 @@ public class CalendarFragment extends Fragment {
             }
         });
 
+
         loadTasksFromFireStore();
-
-        // Add this block to enable swipe-to-delete
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(
-                0,
-                ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                // Swipe-to-delete logic
-                int position = viewHolder.getAdapterPosition();
-                showDeleteTaskDialog(position);
-            }
-
-
-        };
-
-
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
 
         return v;
@@ -123,44 +127,93 @@ public class CalendarFragment extends Fragment {
         startActivity(intent);
     }
 
-    // Show Delete Task Dialog
-    private void showDeleteTaskDialog(final int position) {
-        // Implement a dialog to confirm task deletion
+    // Show Delete Confirmation Dialog
+    private void showDeleteConfirmationDialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Delete Task");
-        builder.setMessage("Are you sure you want to delete this task?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                deleteTask(position);
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // User canceled the deletion
-                taskAdapter.notifyItemChanged(position); // Notify to rebind the view
-            }
-        });
-        builder.show();
+        builder.setMessage("Are you sure you want to delete this task?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteTask(position);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        taskAdapter.notifyItemChanged(position);
+                    }
+                })
+                .show();
     }
 
     // Delete Task
-    private void deleteTask(int position) {
-        // Delete task from Firestore and update the RecyclerView
+    private void deleteTask(final int position) {
         String taskId = taskArrayList.get(position).getTaskId();
-        DbQuery.deleteTask(taskId, new AppCompleteListener() {
-            @Override
-            public void onSuccess() {
-                // Task deleted successfully
-                taskAdapter.removeTask(position); // Update the RecyclerView
-            }
 
-            @Override
-            public void onFailure() {
-                // Handle failure
-            }
-        });
+        if (taskId != null) {
+            DbQuery.g_firestore.collection("Tasks")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .collection("UserTasks")
+                    .document(taskId)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        taskArrayList.remove(position);
+                        taskAdapter.notifyItemRemoved(position);
+                    })
+                    .addOnFailureListener(e -> {
+                        // Handle failure
+                        Toast.makeText(requireContext(), "Failed to delete task", Toast.LENGTH_SHORT).show();
+                        taskAdapter.notifyItemChanged(position);
+                    });
+        } else {
+            // Handle the case where taskId is null
+            Log.e("DeleteTask", "TaskId is null for position: " + position);
+            Toast.makeText(requireContext(), "TaskId is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showCompleteConfirmationDialog(final int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setMessage("Are you sure you want to complete this task?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        completeTask(position);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        taskAdapter.notifyItemChanged(position);
+                    }
+                })
+                .show();
+    }
+
+    private void completeTask(final int position) {
+        String taskId = taskArrayList.get(position).getTaskId();
+        DbQuery.g_firestore.collection("Tasks")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserTasks")
+                .document(taskId)
+                .update("status", "Completed")
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Update the local data and notify the adapter
+                        taskArrayList.get(position).setTaskStatus("Completed");
+                        taskArrayList.remove(position);
+                        taskAdapter.notifyItemRemoved(position);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle failure
+                        Toast.makeText(requireContext(), "Failed to complete task", Toast.LENGTH_SHORT).show();
+                        taskAdapter.notifyItemChanged(position);
+                    }
+                });
     }
 
 }
