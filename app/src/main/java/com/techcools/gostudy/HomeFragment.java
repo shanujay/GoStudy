@@ -130,7 +130,8 @@ public class HomeFragment extends Fragment {
         taskManagerHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // task intent
+                Intent intent = new Intent(getActivity(), TaskManagerActivity.class);
+                startActivity(intent);
             }
         });
 
