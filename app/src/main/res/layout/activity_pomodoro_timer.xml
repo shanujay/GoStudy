@@ -36,7 +36,7 @@
         android:layout_below="@+id/text_view_countdown"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:background="@drawable/done_icon"
+        android:background="@drawable/timer_button"
         android:text="start" />
 
     <Button
@@ -49,7 +49,7 @@
         android:layout_toEndOf="@+id/button_start_pause"
         android:text="reset"
         android:visibility="invisible"
-        android:background="@drawable/next_icon"
+        android:background="@drawable/timer_button"
         tools:visibility="visible" />
 
 </RelativeLayout>
