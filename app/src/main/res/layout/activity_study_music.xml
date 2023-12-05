@@ -91,7 +91,7 @@
                         android:id="@+id/music_1_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play"
+                        android:contentDescription="Play music"
                         android:src="@drawable/options_icon"
                         android:layout_alignParentEnd="true"
                         android:backgroundTint="#FFECE2"
@@ -132,9 +132,9 @@
 
                     <ImageButton
                         android:id="@+id/music_2_play"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="Play"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="Play Music 2"
                         android:src="@drawable/options_icon"
                         android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
@@ -175,9 +175,9 @@
 
                     <ImageButton
                         android:id="@+id/music_3_play"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="Play"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="Play Music"
                         android:src="@drawable/options_icon"
                         android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
@@ -218,9 +218,9 @@
 
                     <ImageButton
                         android:id="@+id/music_4_play"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="Play"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="Play Music 4"
                         android:src="@drawable/options_icon"
                         android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
@@ -261,8 +261,8 @@
 
                     <ImageButton
                         android:id="@+id/music_5_play"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:contentDescription="Play"
                         android:src="@drawable/options_icon"
                         android:backgroundTint="#FFECE2"

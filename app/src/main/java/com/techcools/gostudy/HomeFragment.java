@@ -140,7 +140,8 @@ public class HomeFragment extends Fragment {
         studyMusicHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // study music intent
+                Intent intent = new Intent(getActivity(), StudyMusicActivity.class);
+                startActivity(intent);
             }
         });
         return v;
