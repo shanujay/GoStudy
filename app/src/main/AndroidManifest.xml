@@ -24,6 +24,9 @@
         android:theme="@style/Theme.GoStudy"
         tools:targetApi="34">
         <activity
+            android:name=".StudyMusicActivity"
+            android:exported="false" />
+        <activity
             android:name=".TaskManagerActivity"
             android:exported="false" />
         <activity
