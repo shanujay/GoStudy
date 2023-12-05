@@ -5,46 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECF3FE"
-    tools:context=".PomodoroTimer">
+    android:background="#FFECE2"
+    tools:context=".BreakTimerActivity">
 
     <RelativeLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLayout_BreakTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
-        <!-- Back Button -->
-        <ImageButton
-            android:id="@+id/backButtonTimer"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/back_button"
-            android:backgroundTint="#ECF3FE"
-            android:contentDescription="@string/back_button"/>
-
         <!-- Screen Text -->
         <TextView
-            android:id="@+id/screenText"
+            android:id="@+id/screenTextBreakTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Focus Time"
+            android:text="Break Time"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <!-- Music Button -->
         <ImageButton
-            android:id="@+id/musicButtonTimer"
+            android:id="@+id/musicButtonBreakTimer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="#ECF3FE"
+            android:backgroundTint="#FFECE2"
             android:contentDescription="@string/back_button"
             android:src="@drawable/music_icon" />
 
@@ -52,11 +41,11 @@
 
     <!-- Timer Progress Bar -->
     <ProgressBar
-        android:id="@+id/roundProgressBar_PomodoroTimer"
+        android:id="@+id/roundProgressBar_BreakTimer"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_below="@id/appBarLayout"
+        android:layout_below="@id/appBarLayout_BreakTimer"
         android:layout_centerInParent="true"
         android:layout_marginTop="100dp"
         android:indeterminate="false"
@@ -64,7 +53,7 @@
         android:progressDrawable="@drawable/round_progress_bar" />
 
     <TextView
-        android:id="@+id/text_view_countdown"
+        android:id="@+id/text_view_countdownBreakTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00:00"
@@ -74,48 +63,43 @@
         android:textSize="60sp" />
 
     <LinearLayout
-        android:id="@+id/timerButtonLayout"
+        android:id="@+id/timerButtonLayout_BreakTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/roundProgressBar_PomodoroTimer"
+        android:layout_below="@id/roundProgressBar_BreakTimer"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="16dp">
 
         <!-- Timer Pause Button -->
         <ImageButton
-            android:id="@+id/startButton"
+            android:id="@+id/startButton_BreakTimer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="Timer Pause Button"
             android:src="@drawable/timer_start_icon"
-            android:backgroundTint="#ECF3FE"/>
+            android:backgroundTint="#FFECE2"/>
 
         <!-- Timer Start Button -->
         <ImageButton
-            android:id="@+id/resetButton"
+            android:id="@+id/resetButton_BreakTimer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="Timer Next Button"
             android:src="@drawable/timer_reset_icon"
-            android:backgroundTint="#ECF3FE"/>
+            android:backgroundTint="#FFECE2"/>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/timer_heading"
+        android:id="@+id/timer_heading_BreakTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/timerButtonLayout"
+        android:layout_below="@id/timerButtonLayout_BreakTimer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Work for 25 minutes and take a break "
-        android:textColor="#3725a4"
+        android:text="Good Job! Take 5 minutes break"
+        android:textColor="#4C0916"
         android:textSize="18sp"/>
 
-
-
-
-
 </RelativeLayout>
-

@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -254,6 +255,54 @@ public class DbQuery {
                             }
                         }
                         completeListener.onSuccess(taskList);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    // Save Pomodoro Timer Data into FireStore
+    public static void saveTimerDuration(long timerDuration, AppCompleteListener completeListener) {
+        Map<String, Object> timerData = new HashMap<>();
+        timerData.put("timerDuration", timerDuration);
+        timerData.put("date", FieldValue.serverTimestamp()); // Store the current date/time
+
+        g_firestore.collection("Timers")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserTimers")
+                .add(timerData)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    // Save Break Timer Data into FireStore
+    public static void saveBreakTimerDuration(long breakTimerDuration, AppCompleteListener completeListener) {
+        Map<String, Object> breakTimerData = new HashMap<>();
+        breakTimerData.put("breakTimerDuration", breakTimerDuration);
+        breakTimerData.put("date", FieldValue.serverTimestamp()); // Store the current date/time
+
+        g_firestore.collection("BreakTimers")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserBreakTimers")
+                .add(breakTimerData)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        completeListener.onSuccess();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

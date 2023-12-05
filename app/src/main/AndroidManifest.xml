@@ -24,6 +24,9 @@
         android:theme="@style/Theme.GoStudy"
         tools:targetApi="34">
         <activity
+            android:name=".BreakTimerActivity"
+            android:exported="false" />
+        <activity
             android:name=".PomodoroTimer"
             android:exported="false" />
         <activity
