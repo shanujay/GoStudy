@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class BreakTimerActivity extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 300000;
+    private static final long START_TIME_IN_MILLIS = 60000; //300000
     private ProgressBar progressBar_breakTimer;
     private TextView mTextViewCountDown_breakTimer;
     private ImageButton mButtonStartPause_breakTimer;

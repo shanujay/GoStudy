@@ -83,7 +83,7 @@
 
             <!-- Total Goal Time -->
             <TextView
-                android:id="@+id/totalGoalTime_progress"
+                android:id="@+id/totalBreakTime_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -115,29 +115,6 @@
                 android:layout_marginEnd="30dp"
                 android:gravity="center"
                 android:text="110"
-                android:textColor="@color/purple_700"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:gravity="center"
-                android:text="Total Breaks:"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <!-- Total Breaks -->
-            <TextView
-                android:id="@+id/totalBreaks_progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="95dp"
-                android:layout_marginEnd="30dp"
-                android:gravity="center"
-                android:text="05"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp"
                 android:textStyle="bold"/>

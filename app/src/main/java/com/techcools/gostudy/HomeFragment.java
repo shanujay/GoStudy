@@ -10,6 +10,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +40,7 @@ public class HomeFragment extends Fragment {
 
     CircleImageView profileHome;
     ImageButton notificationHome;
-    CardView pomodoroTimerHome, studyQuestionnaireHome, upcomingTaskHome, taskManagerHome, studyMusicHome;
+    CardView pomodoroTimerHome, studyQuestionnaireHome, taskManagerHome, studyMusicHome;
     TextView textWelcome;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -104,15 +106,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PomodoroTimer.class);
                 startActivity(intent);
-            }
-        });
-
-        // Upcoming Task
-        upcomingTaskHome = v.findViewById(R.id.upcomingTaskBtnHome);
-        upcomingTaskHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // upcoming task intent
             }
         });
 

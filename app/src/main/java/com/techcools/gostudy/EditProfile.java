@@ -374,8 +374,7 @@ public class EditProfile extends AppCompatActivity {
 
     /** Navigate to User Profile **/
     public void navigateUserProfile() {
-        Intent intent = new Intent(EditProfile.this, UserProfile.class);
-        startActivity(intent);
-        EditProfile.this.finish();
+        onBackPressed();
+        finish();
     }
 }

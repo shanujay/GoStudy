@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class PomodoroTimer extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 1500000;
+    private static final long START_TIME_IN_MILLIS = 60000; //1500000
     private ProgressBar progressBar_pomodoroTimer;
     private TextView mTextViewCountDown;
     private ImageButton mButtonStartPause;
@@ -66,6 +66,13 @@ public class PomodoroTimer extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(PomodoroTimer.this, StudyMusicActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        backBtnTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

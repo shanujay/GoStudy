@@ -44,6 +44,6 @@ public class StudyMethodActivity extends AppCompatActivity {
 
     // Go Back
     private void goBack() {
-        Intent intent = new Intent(this, HomeFragment.class);
+        onBackPressed();
     }
 }

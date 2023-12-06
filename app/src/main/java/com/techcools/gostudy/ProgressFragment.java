@@ -19,6 +19,10 @@ import java.util.ArrayList;
 
 public class ProgressFragment extends Fragment {
 
+    private PieChart pieChart;
+    private TextView totalFocusTIme;
+    private TextView totalBreakTime;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,6 +31,8 @@ public class ProgressFragment extends Fragment {
 
         // Get TextView reference
         TextView textViewDate = view.findViewById(R.id.textViewDate);
+        totalFocusTIme = view.findViewById(R.id.totalFocusTime_progress);
+        totalBreakTime = view.findViewById(R.id.totalBreakTime_progress);
 
         // Set current date with custom format
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -34,31 +40,70 @@ public class ProgressFragment extends Fragment {
         textViewDate.setText(currentDate);
 
         // Set up PieChart
-        PieChart pieChart = view.findViewById(R.id.pieChart);
-        setupPieChart(pieChart);
+        pieChart = view.findViewById(R.id.pieChart);
+
+        // Fetch Pomodoro timer and break timer data and update the PieChart
+        fetchPomodoroDataAndUpdateChart();
+        fetchBreakDataAndUpdateChart();
+
 
         return view;
     }
 
-    private void setupPieChart(PieChart pieChart) {
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(25f));
-        entries.add(new PieEntry(75f));
+    private void fetchPomodoroDataAndUpdateChart() {
+        DbQuery.getPomodoroTimerDataForCurrentDate(new TimerDataCompleteListener() {
+            @Override
+            public void onSuccess(long totalFocusDuration) {
+                totalFocusTIme.setText(formatDuration(totalFocusDuration));
+                // Fetch break timer data inside the success callback for focus time
+                fetchBreakDataAndUpdateChart();
+            }
 
+            @Override
+            public void onFailure() {
+                // Handle failure, e.g., show an error message
+            }
+        });
+    }
+
+    private void fetchBreakDataAndUpdateChart() {
+        DbQuery.getBreakTimerDataForCurrentDate(new TimerDataCompleteListener() {
+            @Override
+            public void onSuccess(long totalBreakDuration) {
+                totalBreakTime.setText(formatDuration(totalBreakDuration));
+
+
+            }
+
+            @Override
+            public void onFailure() {
+                // Handle failure, e.g., show an error message
+            }
+        });
+    }
+
+    private void updatePieChart(long totalFocusDuration, long totalBreakDuration, long difference) {
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        entries.add(new PieEntry(totalFocusDuration, "Focus Time"));
+        entries.add(new PieEntry(totalBreakDuration, "Break Time"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(ColorTemplate.LIBERTY_COLORS);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         dataSet.setValueTextSize(12f);
 
         PieData data = new PieData(dataSet);
-        // Disable legend
         pieChart.getLegend().setEnabled(false);
-
-        // Disable value labels
         data.setDrawValues(false);
         pieChart.setData(data);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Task Completed");
+        pieChart.setCenterText("Time Distribution\nDifference: " + formatDuration(Math.abs(difference)));
         pieChart.animateY(1000);
     }
+
+    private String formatDuration(long milliseconds) {
+        long minutes = (milliseconds / (1000 * 60)) % 60;
+        long hours = milliseconds / (1000 * 60 * 60);
+        return String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
+    }
+
 }

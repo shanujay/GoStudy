@@ -16,10 +16,20 @@ public class StudyMusicActivity extends AppCompatActivity {
     private boolean isResume;
     private MediaPlayer music1, music2, music3, music4, music5;
 
+    ImageButton backBtnMusic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_music);
+
+        backBtnMusic = findViewById(R.id.backBtnStudyMusic);
+        backBtnMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         // Relaxing Music 1
         imageButton_music1 = findViewById(R.id.music_1_play);
@@ -30,11 +40,11 @@ public class StudyMusicActivity extends AppCompatActivity {
             if (!isResume) {
                 isResume = true;
                 // Change the Icon
-                imageButton_music1.setImageDrawable(getResources().getDrawable(R.drawable.next_icon));
+                imageButton_music1.setImageDrawable(getResources().getDrawable(R.drawable.timer_pause_icon));
             } else {
                 isResume = false;
                 // Change the Icon
-                imageButton_music1.setImageDrawable(getResources().getDrawable(R.drawable.done_icon));
+                imageButton_music1.setImageDrawable(getResources().getDrawable(R.drawable.timer_start_icon));
             }
 
             // Play and Stop Music
@@ -54,11 +64,11 @@ public class StudyMusicActivity extends AppCompatActivity {
             if (!isResume) {
                 isResume = true;
                 // Change the Icon
-                imageButton_music2.setImageDrawable(getResources().getDrawable(R.drawable.next_icon));
+                imageButton_music2.setImageDrawable(getResources().getDrawable(R.drawable.timer_pause_icon));
             } else {
                 isResume = false;
                 // Change the Icon
-                imageButton_music2.setImageDrawable(getResources().getDrawable(R.drawable.done_icon));
+                imageButton_music2.setImageDrawable(getResources().getDrawable(R.drawable.timer_start_icon));
             }
 
             // Play and Stop Music
@@ -78,11 +88,11 @@ public class StudyMusicActivity extends AppCompatActivity {
             if (!isResume) {
                 isResume = true;
                 // Change the Icon
-                imageButton_music3.setImageDrawable(getResources().getDrawable(R.drawable.next_icon));
+                imageButton_music3.setImageDrawable(getResources().getDrawable(R.drawable.timer_pause_icon));
             } else {
                 isResume = false;
                 // Change the Icon
-                imageButton_music3.setImageDrawable(getResources().getDrawable(R.drawable.done_icon));
+                imageButton_music3.setImageDrawable(getResources().getDrawable(R.drawable.timer_start_icon));
             }
 
             // Play and Stop Music
@@ -102,11 +112,11 @@ public class StudyMusicActivity extends AppCompatActivity {
             if (!isResume) {
                 isResume = true;
                 // Change the Icon
-                imageButton_music4.setImageDrawable(getResources().getDrawable(R.drawable.next_icon));
+                imageButton_music4.setImageDrawable(getResources().getDrawable(R.drawable.timer_pause_icon));
             } else {
                 isResume = false;
                 // Change the Icon
-                imageButton_music4.setImageDrawable(getResources().getDrawable(R.drawable.done_icon));
+                imageButton_music4.setImageDrawable(getResources().getDrawable(R.drawable.timer_start_icon));
             }
 
             // Play and Stop Music
@@ -126,11 +136,11 @@ public class StudyMusicActivity extends AppCompatActivity {
             if (!isResume) {
                 isResume = true;
                 // Change the Icon
-                imageButton_music5.setImageDrawable(getResources().getDrawable(R.drawable.next_icon));
+                imageButton_music5.setImageDrawable(getResources().getDrawable(R.drawable.timer_pause_icon));
             } else {
                 isResume = false;
                 // Change the Icon
-                imageButton_music5.setImageDrawable(getResources().getDrawable(R.drawable.done_icon));
+                imageButton_music5.setImageDrawable(getResources().getDrawable(R.drawable.timer_start_icon));
             }
 
             // Play and Stop Music

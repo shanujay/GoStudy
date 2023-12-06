@@ -16,6 +16,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
@@ -312,6 +313,104 @@ public class DbQuery {
                     }
                 });
     }
+
+    // Get Pomodoro Timer Data for Current Date
+    public static void getPomodoroTimerDataForCurrentDate(TimerDataCompleteListener completeListener) {
+        // Get the current date in the "yyyy-MM-dd" format
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        g_firestore.collection("Timers")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserTimers")
+                .whereGreaterThanOrEqualTo("date", getStartOfDayTimestamp(currentDate))
+                .whereLessThanOrEqualTo("date", getEndOfDayTimestamp(currentDate))
+                .orderBy("date", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        long totalDuration = 0;
+                        for (DocumentSnapshot timerSnapshot : queryDocumentSnapshots.getDocuments()) {
+                            // Assuming "timerDuration" is the field in your Firestore document
+                            long timerDuration = timerSnapshot.getLong("timerDuration");
+                            totalDuration += timerDuration;
+                        }
+                        completeListener.onSuccess(totalDuration);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    // Helper method to get the timestamp for the start of the day
+    private static Date getStartOfDayTimestamp(String dateString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date = sdf.parse(dateString);
+            if (date != null) {
+                return date;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
+    }
+
+    // Helper method to get the timestamp for the end of the day
+    private static Date getEndOfDayTimestamp(String dateString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date = sdf.parse(dateString);
+            if (date != null) {
+                // Add 1 day and subtract 1 millisecond to get the end of the day
+                return new Date(date.getTime() + (24 * 60 * 60 * 1000 - 1));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
+    }
+
+
+    // Get Break Timer Data for Current Date
+    public static void getBreakTimerDataForCurrentDate(TimerDataCompleteListener completeListener) {
+        // Get the current date in the "yyyy-MM-dd" format
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        g_firestore.collection("BreakTimers")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .collection("UserBreakTimers")
+                .whereGreaterThanOrEqualTo("date", getStartOfDayTimestamp(currentDate))
+                .whereLessThanOrEqualTo("date", getEndOfDayTimestamp(currentDate))
+                .orderBy("date", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        long totalDuration = 0;
+                        for (DocumentSnapshot timerSnapshot : queryDocumentSnapshots.getDocuments()) {
+                            // Assuming "timerDuration" is the field in your Firestore document
+                            long timerDuration = timerSnapshot.getLong("breakTimerDuration");
+                            totalDuration += timerDuration;
+                        }
+                        completeListener.onSuccess(totalDuration);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+
 
 
 }

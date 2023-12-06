@@ -20,13 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/backBtnStudyMusic"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
                 android:padding="10dp"
                 android:src="@drawable/back_button"
+                android:backgroundTint="@color/white"
                 android:contentDescription="@string/go_back"/>
 
             <TextView
@@ -91,11 +92,14 @@
                         android:id="@+id/music_1_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play music"
-                        android:src="@drawable/options_icon"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
                         android:backgroundTint="#FFECE2"
-                        android:layout_margin="10dp"/>
+                        android:contentDescription="Play music"
+                        android:src="@drawable/timer_start_icon" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -134,11 +138,14 @@
                         android:id="@+id/music_2_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play Music 2"
-                        android:src="@drawable/options_icon"
-                        android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
-                        android:layout_margin="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#FFECE2"
+                        android:contentDescription="Play Music 2"
+                        android:src="@drawable/timer_start_icon" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -177,11 +184,14 @@
                         android:id="@+id/music_3_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play Music"
-                        android:src="@drawable/options_icon"
-                        android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
-                        android:layout_margin="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#FFECE2"
+                        android:contentDescription="Play Music"
+                        android:src="@drawable/timer_start_icon" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -220,11 +230,14 @@
                         android:id="@+id/music_4_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play Music 4"
-                        android:src="@drawable/options_icon"
-                        android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
-                        android:layout_margin="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#FFECE2"
+                        android:contentDescription="Play Music 4"
+                        android:src="@drawable/timer_start_icon" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -263,11 +276,14 @@
                         android:id="@+id/music_5_play"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Play"
-                        android:src="@drawable/options_icon"
-                        android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
-                        android:layout_margin="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#FFECE2"
+                        android:contentDescription="Play"
+                        android:src="@drawable/timer_start_icon" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -307,7 +323,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:contentDescription="Play"
-                        android:src="@drawable/options_icon"
+                        android:src="@drawable/timer_start_icon"
                         android:backgroundTint="#FFECE2"
                         android:layout_alignParentEnd="true"
                         android:layout_margin="10dp"/>

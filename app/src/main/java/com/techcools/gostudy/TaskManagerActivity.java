@@ -36,9 +36,7 @@ public class TaskManagerActivity extends AppCompatActivity {
         backBtnTaskManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TaskManagerActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
 
