@@ -102,7 +102,8 @@ public class HomeFragment extends Fragment {
         pomodoroTimerHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // timer intent
+                Intent intent = new Intent(getActivity(), PomodoroTimer.class);
+                startActivity(intent);
             }
         });
 
