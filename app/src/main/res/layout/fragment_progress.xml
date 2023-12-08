@@ -71,17 +71,18 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="10dp">
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text="Total Goal Time:"
+                android:text="Total Break Time:"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <!-- Total Goal Time -->
+            <!-- Total Break Time -->
             <TextView
                 android:id="@+id/totalBreakTime_progress"
                 android:layout_width="wrap_content"
@@ -90,7 +91,6 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:gravity="center"
-                android:text="150"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -98,14 +98,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_marginTop="55dp"
+                android:layout_alignParentStart="true"
                 android:gravity="center"
                 android:text="Total Focus Time:"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <!-- Total Focus Time -->
+
             <TextView
                 android:id="@+id/totalFocusTime_progress"
                 android:layout_width="wrap_content"
@@ -114,7 +115,6 @@
                 android:layout_marginTop="55dp"
                 android:layout_marginEnd="30dp"
                 android:gravity="center"
-                android:text="110"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
